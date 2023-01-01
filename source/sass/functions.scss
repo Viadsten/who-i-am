@@ -4,7 +4,7 @@
 }
 
 @function size-desktop($size-in-px) {
-  @return calc($size-in-px / $vp-1920 * 100vw);
+  @return calc($size-in-px / $vp-1440 * 100vw);
 }
 
 // reboot.scss

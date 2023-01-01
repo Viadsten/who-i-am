@@ -15,7 +15,7 @@ html {
   font-style: normal;
   font-weight: 400;
   line-height: 24px;
-  font-family: $ff-placeholder;
+  font-family: $ff-mulish;
   color: $color-default-black;
 
   -webkit-font-smoothing: antialiased;
@@ -27,7 +27,7 @@ html {
 
   font-size: $fz-default;
 
- @include vp-1919 {
+ @include vp-1439 {
    font-size: size-desktop($fz-default);
 
  }
