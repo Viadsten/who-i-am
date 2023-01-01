@@ -19,7 +19,7 @@ const compileStyles = () =>
               grid: true,
             })]))
       .pipe(gcmq()) // выключите, если в проект импортятся шрифты через ссылку на внешний источник
-      .pipe(gulp.dest('build/css'))
+      .pipe(gulp.dest('docs/css'))
       .pipe(csso())
       .pipe(rename('style.min.css'))
       .pipe(gulp.dest('docs/css', {sourcemaps: '.'}));
