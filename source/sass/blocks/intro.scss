@@ -1,0 +1,39 @@
+.intro {
+  position: relative;
+
+  min-height: 300vh;
+  height: 300vh;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    height: 100vh;
+    max-height: 100vh;
+    min-height: 100vh;
+  }
+
+  &__title {
+    white-space: nowrap;
+
+    &:not(:last-child) {
+      margin-bottom: size(30px);
+    }
+
+    &--big {
+      font-size: size(129px);
+      line-height: size(129px);
+    }
+
+    &--medium {
+      font-size: size(119px);
+      line-height: size(129px);
+    }
+
+    &--small {
+      font-size: size(109px);
+      line-height: size(109px);
+    }
+  }
+}

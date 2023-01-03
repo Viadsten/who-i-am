@@ -2,7 +2,9 @@
 // ---------------------------------
 
 @import "vendor/normalize";
+@import "vendor/splitting";
 @import "vendor/locomotive-scroll";
+
 
 // Swiper 7.4.1
 // @import "vendor/swiper";
@@ -25,10 +27,14 @@
 @import "blocks/main-nav";
 @import "blocks/footer";
 @import "blocks/modal";
-@import "blocks/btn";
 @import "blocks/custom-input";
 @import "blocks/custom-toggle";
 @import "blocks/custom-select";
+@import "blocks/intro";
+
+
+@import "blocks/btn";
+@import "blocks/title";
 
 // ---------------------------------
 

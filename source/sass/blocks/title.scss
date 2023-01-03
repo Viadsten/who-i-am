@@ -1,0 +1,21 @@
+.title {
+  font-family: $ff-mulish;
+  font-size: size(164px);
+  line-height: size(164px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: size(-6.8px);
+  color: $color-default-black;
+
+  &--lowercase {
+    text-transform: lowercase;
+  }
+
+  &--right {
+    text-align: right;
+  }
+
+  &--orange {
+    color: $color-dark-tangerine;
+  }
+}

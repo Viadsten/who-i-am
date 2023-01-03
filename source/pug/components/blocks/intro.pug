@@ -1,10 +1,11 @@
 mixin intro()
   .intro
-    //- вставлять блоки во внешний контейнер неверно
-    //- все блоки содержат в себе container без доп класса tutorial__wrapper
-    .container
-      p(style="margin-top: 40px;") Текст&nbsp;с&nbsp;мнемониками
+    .locomotive-sticky#intro-sticky
+    .intro__sticky.sticky-block(data-scroll-target="#intro-sticky" data-scroll data-scroll-sticky)
+      .container
+        h1.visually-hidden Hello! I am web developer, and i love it
+        .intro__inner
+          span.title.intro__title.intro__title--big(data-splitting) HELLO!
+          span.title.title--right.intro__title.intro__title--medium(data-splitting) I am web developer
+          span.title.title--right.title--orange.title--lowercase.intro__title.intro__title--small(data-splitting) and i love it
 
-      p(style="margin-top: 40px;") Пример использования +img()
-      p(style="margin-bottom: 40px;")
-        +img("content", "placeholder", "png", 120, 120, "Пример")

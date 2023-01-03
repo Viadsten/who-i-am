@@ -2,9 +2,9 @@ import {iosVhFix} from './utils/ios-vh-fix';
 import {initModals} from './modules/modals/init-modals';
 import {Form} from './modules/form-validate/form';
 import {CustomSelect} from './modules/select/custom-select';
-import {initLocomotiveScroll} from "./modules/smooth-scroll/init-locomotive.js";
+import {initLocomotiveScroll, locomotive} from "./modules/smooth-scroll/init-locomotive.js";
 import {initScrollTrigger} from "./modules/smooth-scroll/init-scroll-trigger.js";
-
+import {initAnimationModule} from "./modules/animations/index.js";
 // ---------------------------------
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -21,14 +21,14 @@ window.addEventListener('DOMContentLoaded', () => {
   // в load следует добавить скрипты, не участвующие в работе первого экрана
   window.addEventListener('load', () => {
     initModals();
-    // const select = new CustomSelect();
-    // select.init();
-    // const form = new Form();
-    // window.form = form;
-    // form.init();
 
     initLocomotiveScroll();
     initScrollTrigger();
+    initAnimationModule();
+
+    setTimeout(() => {
+      locomotive.update();
+    }, 10);
   });
 });
 

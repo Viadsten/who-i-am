@@ -25,12 +25,13 @@ html {
   // если по прежнему есть проблемы с выравниванием
   // https://transfonter.org/ - включите настройку https://prnt.sc/12rnt6g и переконвертируйте шрифт
 
-  font-size: $fz-default;
+  //font-size: $fz-default;
+  font-size: size-desktop($fz-default);
 
- @include vp-1439 {
-   font-size: size-desktop($fz-default);
-
- }
+ //@include vp-1439 {
+ //  font-size: size-desktop($fz-default);
+ //
+ //}
 }
 
 body {
