@@ -24,7 +24,7 @@ html(lang="ru")
 
   body
     +sprite()
-    .wrapper(class=wrapperMods)
+    .wrapper(class=wrapperMods, data-scroll-container)
       if (hasHeader)
         +header(headerMods, currentUrl)
 
