@@ -23,6 +23,9 @@
 // Blocks
 // ---------------------------------
 
+@import "blocks/btn";
+@import "blocks/title";
+
 @import "blocks/header";
 @import "blocks/main-nav";
 @import "blocks/footer";
@@ -30,11 +33,11 @@
 @import "blocks/custom-input";
 @import "blocks/custom-toggle";
 @import "blocks/custom-select";
+
 @import "blocks/intro";
+@import "blocks/my-titles";
 
 
-@import "blocks/btn";
-@import "blocks/title";
 
 // ---------------------------------
 

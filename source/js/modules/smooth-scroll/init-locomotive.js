@@ -13,7 +13,7 @@ const initLocomotiveScroll = () => {
   locomotive = new LocomotiveScroll({
     el,
     smooth: true,
-    lerp: 0.05,
+    lerp: 0.025,
     getDirection: true,
     tablet: {
       breakpoint: 1023,
@@ -26,6 +26,7 @@ const initLocomotiveScroll = () => {
   });
 
   resizeObserver.observe(document.documentElement);
+  window.locomotive = locomotive;
 };
 
 export {initLocomotiveScroll, locomotive};

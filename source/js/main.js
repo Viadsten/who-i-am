@@ -3,12 +3,15 @@ import {initModals} from './modules/modals/init-modals';
 import {Form} from './modules/form-validate/form';
 import {CustomSelect} from './modules/select/custom-select';
 import {initLocomotiveScroll, locomotive} from "./modules/smooth-scroll/init-locomotive.js";
-import {initScrollTrigger} from "./modules/smooth-scroll/init-scroll-trigger.js";
+import {initScrollTrigger, scrollTrigger} from "./modules/smooth-scroll/init-scroll-trigger.js";
 import {initAnimationModule} from "./modules/animations/index.js";
+import {ScrollLock} from "./utils/scroll-lock.js";
 // ---------------------------------
 
 window.addEventListener('DOMContentLoaded', () => {
-
+  window.scrollTo(0, 0);
+  const loaderScrollLock = new ScrollLock();
+  loaderScrollLock.disableScrolling();
   // Utils
   // ---------------------------------
 
@@ -20,15 +23,28 @@ window.addEventListener('DOMContentLoaded', () => {
   // все скрипты должны быть в обработчике 'DOMContentLoaded', но не все в 'load'
   // в load следует добавить скрипты, не участвующие в работе первого экрана
   window.addEventListener('load', () => {
+    loaderScrollLock.enableScrolling();
+
     initModals();
 
-    initLocomotiveScroll();
-    initScrollTrigger();
-    initAnimationModule();
 
     setTimeout(() => {
-      locomotive.update();
-    }, 10);
+      window.scrollTo(0, 0);
+    }, 1);
+
+    setTimeout(() => {
+      initLocomotiveScroll();
+      initScrollTrigger();
+      initAnimationModule();
+    }, 5);
+
+    setTimeout(() => {
+
+      if (locomotive) {
+        locomotive.update();
+      }
+      scrollTrigger.refresh();
+    }, 20);
   });
 });
 

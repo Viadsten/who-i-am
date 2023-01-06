@@ -1,4 +1,6 @@
 .title {
+  margin: 0;
+
   font-family: $ff-mulish;
   font-size: size(164px);
   line-height: size(164px);
@@ -13,6 +15,14 @@
 
   &--right {
     text-align: right;
+  }
+
+  &--center {
+    text-align: center;
+  }
+
+  &--justify {
+    text-align-last: justify;
   }
 
   &--orange {

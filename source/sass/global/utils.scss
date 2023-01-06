@@ -69,6 +69,8 @@
 
   height: 100vh;
   width: 100%;
+
+  overflow: hidden;
 }
 
 .locomotive-sticky {
@@ -86,6 +88,18 @@
 html.has-scroll-smooth {
   .sticky-block {
     position: absolute;
-    z-index: 100;
+    z-index: 1;
+  }
+}
+
+.horizontal-section {
+  position: relative;
+
+  min-height: 100vh;
+
+  .horizontal-section__container {
+    padding-right: 0;
+    max-width: unset;
+    min-width: max-content;
   }
 }

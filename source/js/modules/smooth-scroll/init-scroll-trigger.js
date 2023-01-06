@@ -1,6 +1,7 @@
 import {ScrollTrigger} from './../../vendor/scroll-trigger.min.js';
 import {locomotive} from './init-locomotive';
 let scrollTrigger;
+let pageScroller;
 
 const initScrollTrigger = () => {
   gsap.registerPlugin(ScrollTrigger);
@@ -33,6 +34,13 @@ const initScrollTrigger = () => {
   });
 
   scrollTrigger = ScrollTrigger;
+  pageScroller = scrollTrigger.create({
+    trigger: '[data-scroll-container]',
+    scroller: '[data-scroll-container]',
+    start: 'top top',
+    end: 'bottom bottom',
+  });
+  window.ps = pageScroller;
 };
 
-export {initScrollTrigger, scrollTrigger};
+export {initScrollTrigger, scrollTrigger, pageScroller};

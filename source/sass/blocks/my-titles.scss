@@ -1,0 +1,37 @@
+.my-titles {
+  height: 100vh;
+  max-height: 100vh;
+  min-height: 100vh;
+  padding-left: 100vw;
+  width: 200vw;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__title {
+    font-weight: 400;
+
+    &:not(:last-child) {
+      margin-bottom: size(20px);
+    }
+  }
+
+  &[data-animate-my-titles] {
+    [data-animate-my-titles="frontend"] {
+      transform: translate3d(40%, 0, 0);
+
+      .title {
+        transform: translate3d(18%, 0, 0);
+      }
+    }
+
+    [data-animate-my-titles="developer"] {
+      transform: translate3d(30%, 0, 0);
+
+      .title {
+        transform: translate3d(10%, 0, 0);
+      }
+    }
+  }
+}

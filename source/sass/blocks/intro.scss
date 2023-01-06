@@ -16,6 +16,12 @@
 
   &__title {
     white-space: nowrap;
+    display: inline-block;
+    width: min-content;
+
+    &.title--right {
+      margin-left: auto;
+    }
 
     &:not(:last-child) {
       margin-bottom: size(30px);

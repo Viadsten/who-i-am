@@ -1,11 +1,11 @@
 mixin intro()
-  .intro
+  .intro(data-animate-intro)
     .locomotive-sticky#intro-sticky
     .intro__sticky.sticky-block(data-scroll-target="#intro-sticky" data-scroll data-scroll-sticky)
       .container
         h1.visually-hidden Hello! I am web developer, and i love it
-        .intro__inner
+        .intro__inner(data-animate-intro="title")
           span.title.intro__title.intro__title--big(data-splitting) HELLO!
-          span.title.title--right.intro__title.intro__title--medium(data-splitting) I am web developer
-          span.title.title--right.title--orange.title--lowercase.intro__title.intro__title--small(data-splitting) and i love it
+          span.title.title--right.intro__title.intro__title--medium(data-splitting, data-delay="0.8") I am web developer
+          span.title.title--right.title--orange.title--lowercase.intro__title.intro__title--small(data-splitting, data-delay="2.5") and i love it
 
