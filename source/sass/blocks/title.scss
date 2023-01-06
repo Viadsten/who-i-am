@@ -9,6 +9,17 @@
   letter-spacing: size(-6.8px);
   color: $color-default-black;
 
+  &--medium {
+    font-size: size(82px);
+    line-height: size(82px);
+  }
+
+  &--stroke {
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: $color-default-black;
+    color: $color-transparent;
+  }
+
   &--lowercase {
     text-transform: none;
   }

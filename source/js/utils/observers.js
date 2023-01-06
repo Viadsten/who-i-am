@@ -27,7 +27,7 @@ export const initScrollObserver = () => {
   scrollObserver = new EventObserver();
   gsap.timeline({
     scrollTrigger: {
-      trigger: '[data-scroll-container]',
+      trigger: '[data-scroll-container] main',
       scroller: '[data-scroll-container]',
       start: 'top',
       end: 'bottom',

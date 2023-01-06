@@ -1,0 +1,39 @@
+.marquee {
+  width: 100%;
+  display: flex;
+
+  overflow: hidden;
+  pointer-events: none;
+
+  &__inner {
+    display: flex;
+  }
+
+  &__item {
+    display: flex;
+  }
+
+  &__text {
+    margin: 0;
+    position: relative;
+
+    display: flex;
+
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    &::after {
+      position: relative;
+      top: -2px;
+      content: '—';
+      margin: 0 20px 5px;
+
+      display: block;
+    }
+
+    &--stroke {
+      -webkit-text-stroke: 2px black;
+      -webkit-text-fill-color: white;
+    }
+  }
+}

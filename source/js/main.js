@@ -7,6 +7,7 @@ import {initScrollTrigger, scrollTrigger} from "./modules/smooth-scroll/init-scr
 import {initAnimationModule} from "./modules/animations/index.js";
 import {ScrollLock} from "./utils/scroll-lock.js";
 import {Cursor} from "./modules/cursor.js";
+import {initScrollObserver} from "./utils/observers.js";
 // ---------------------------------
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -36,10 +37,11 @@ window.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       initLocomotiveScroll();
       initScrollTrigger();
+      initScrollObserver();
       initAnimationModule();
 
       new Cursor();
-      console.log('install')
+      console.log('install');
     }, 5);
 
     setTimeout(() => {

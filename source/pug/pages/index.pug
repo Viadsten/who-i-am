@@ -12,6 +12,7 @@ block variables
 block main
   main
     +intro()
+
     .horizontal-section.horizontal-section--my-title(data-animate-horizontal="my-titles")
       .locomotive-sticky#my-titles-sticky
       .horizontal-section__sticky.sticky-block(data-scroll data-scroll-sticky data-scroll-target="#my-titles-sticky")
@@ -30,6 +31,29 @@ block main
         .horizontal-section__container.container
           .technology-stack(data-animate-technology-title)
             .title.title--lowercase.title--wide(data-splitting) The technology stack that I use for development
+
+    .contact
+      .contact__inner
+        .contact__marquee
+          .marquee(data-marquee)
+            .marquee__inner
+              .marquee__item
+                p.marquee__text.title.title--medium.title--wide contact
+                p.marquee__text.title.title--medium.title--stroke.title--wide contact
+        ul.contact__list
+          li.contact__item
+            a(href="#").contact__link(data-cursor-btn="circle")
+              +icon('github-icon', 132, 132)
+          li.contact__item
+            a(href="#").contact__link(data-cursor-btn="circle")
+              +icon('telegram-icon', 132, 132)
+          li.contact__item
+            a(href="#").contact__link(data-cursor-btn="circle")
+              +icon('linked-in-icon', 132, 132)
+        p.contact__footer Thank you for your visit 🖤
+
+
+
 
 
 

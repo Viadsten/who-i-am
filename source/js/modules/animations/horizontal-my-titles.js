@@ -70,6 +70,7 @@ export class HorizontalMyTitles {
 
     this.hideTimeline = gsap.to(this.titleContainer, {
       x: () => `-=${window.innerWidth * 1.5}`,
+      ease: 'linear',
     });
     //
     scrollTrigger.create({

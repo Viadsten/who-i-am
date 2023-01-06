@@ -1,3 +1,5 @@
+import {scrollObserver} from "../utils/observers.js";
+
 export class Cursor {
   constructor() {
     this.container = document.querySelector('body');
@@ -117,6 +119,8 @@ export class Cursor {
     gsap.ticker.add(this.updatePosition);
     document.addEventListener('mousemove', this.handlerMouseMove);
     window.addEventListener('click', this.clickCursorAnimation);
+    scrollObserver.subscribe(() => this.handlerMouseMove());
+
   }
 
   breakpointChecker() {
