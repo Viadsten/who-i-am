@@ -7,7 +7,7 @@ export class Marquee {
     this.item = this.container.querySelector('.marquee__item');
     this.cloneItem = this.item.outerHTML;
 
-    this.clamp = gsap.utils.clamp(-20, 20);
+    this.clamp = gsap.utils.clamp(-40, 40);
     this.speedScaleTimeout = null;
     this.direction = 1;
 
@@ -18,7 +18,7 @@ export class Marquee {
     this.marqueeTimeline = gsap.timeline({});
 
     this.marqueeTimeline.to(this.items, {
-      duration: 20,
+      duration: 30,
       ease: "none",
       x: -this.itemWidth,
       // modifiers: {
@@ -55,7 +55,7 @@ export class Marquee {
       start: 'top bottom',
       end: 'bottom top',
       onUpdate: (self) => {
-        let speedScale = (Math.abs(this.clamp(self.getVelocity() / -100)) + 1) * self.direction;
+        let speedScale = (Math.abs(this.clamp(self.getVelocity() / -10)) + 1) * self.direction;
 
         gsap.to(this.marqueeTimeline, {
           timeScale: speedScale,

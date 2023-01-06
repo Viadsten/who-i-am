@@ -15,7 +15,7 @@
   }
 
   &--stroke {
-    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-width: size(2px);
     -webkit-text-stroke-color: $color-default-black;
     color: $color-transparent;
   }
