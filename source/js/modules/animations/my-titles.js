@@ -61,7 +61,7 @@ export class MyTitles {
     this.bgScrollTrigger = scrollTrigger.create({
       scroller: '[data-scroll-container]',
       trigger: '[data-animate-horizontal="my-titles"]',
-      start: () => `top top-=${window.innerHeight * 2}`,
+      start: () => `top top-=${window.innerHeight * 1}`,
       end: () => `+=${window.innerHeight * 3}`,
       animation: this.bgTimeline,
       scrub: true,

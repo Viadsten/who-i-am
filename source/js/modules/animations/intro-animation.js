@@ -34,7 +34,6 @@ export class IntroAnimation {
       this.timeline.kill();
       this.timeline = null;
     }
-    console.log(this.titles[0].getBoundingClientRect().bottom - this.titleContainer.getBoundingClientRect().top);
 
     this.timeline = gsap.timeline({paused: true});
     this.timeline.addLabel('start');

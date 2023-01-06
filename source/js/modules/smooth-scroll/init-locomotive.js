@@ -14,6 +14,7 @@ const initLocomotiveScroll = () => {
     el,
     smooth: true,
     lerp: 0.025,
+    multiplier: 0.65,
     getDirection: true,
     tablet: {
       breakpoint: 1023,

@@ -92,14 +92,4 @@ html.has-scroll-smooth {
   }
 }
 
-.horizontal-section {
-  position: relative;
 
-  min-height: 100vh;
-
-  .horizontal-section__container {
-    padding-right: 0;
-    max-width: unset;
-    min-width: max-content;
-  }
-}
