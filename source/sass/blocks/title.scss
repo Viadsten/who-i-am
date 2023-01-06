@@ -13,6 +13,10 @@
     text-transform: none;
   }
 
+  &--wide {
+    letter-spacing: unset;
+  }
+
   &--right {
     text-align: right;
   }
