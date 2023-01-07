@@ -12,45 +12,14 @@ block variables
 block main
   main
     +intro()
+    +my-titles()
+    +technology-title()
+    +technology-list()
+    +contact()
 
-    .horizontal-section.horizontal-section--my-title(data-animate-horizontal="my-titles")
-      .locomotive-sticky#my-titles-sticky
-      .horizontal-section__sticky.sticky-block(data-scroll data-scroll-sticky data-scroll-target="#my-titles-sticky")
-        .horizontal-section__container.container
-          .my-titles(data-animate-my-titles)
-            .my-titles__row(data-animate-my-titles="frontend")
-              p.title.my-titles__title Frontend
-            .my-titles__row(data-animate-my-titles="developer")
-              p.title.title--center.my-titles__title developer
-            .my-titles__row
-              p.title.title--justify.my-titles__title Team lead
 
-    .horizontal-section.horizontal-section--technology-title(data-animate-horizontal="technology-title")
-      .locomotive-sticky#technology-title
-      .horizontal-section__sticky.sticky-block(data-scroll data-scroll-sticky data-scroll-target="#technology-title")
-        .horizontal-section__container.container
-          .technology-stack(data-animate-technology-title)
-            .title.title--lowercase.title--wide(data-splitting) The technology stack that I use for development
 
-    .contact
-      .contact__inner
-        .contact__marquee
-          .marquee(data-marquee)
-            .marquee__inner
-              .marquee__item
-                p.marquee__text.title.title--medium.title--wide contact
-                p.marquee__text.title.title--medium.title--wide contact
-        ul.contact__list
-          li.contact__item
-            a(href="#").contact__link(data-cursor-btn="circle")
-              +icon('github-icon', 132, 132)
-          li.contact__item
-            a(href="#").contact__link(data-cursor-btn="circle")
-              +icon('telegram-icon', 132, 132)
-          li.contact__item
-            a(href="#").contact__link(data-cursor-btn="circle")
-              +icon('linked-in-icon', 132, 132)
-        p.contact__footer Thank you for your visit 🖤
+
 
 
 

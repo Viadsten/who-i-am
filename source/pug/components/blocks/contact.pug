@@ -1,0 +1,21 @@
+mixin contact()
+  section.contact
+    h2.visually-hidden contact
+    .contact__inner
+      .contact__marquee
+        .marquee(data-marquee)
+          .marquee__inner
+            .marquee__item
+              p.marquee__text.title.title--medium contact
+              p.marquee__text.title.title--medium contact
+      ul.contact__list
+        li.contact__item
+          a(href="#" data-cursor-btn="circle").contact__link
+            +icon('github-icon', 132, 132)
+        li.contact__item
+          a(href="#" data-cursor-btn="circle").contact__link
+            +icon('telegram-icon', 132, 132)
+        li.contact__item
+          a(href="#" data-cursor-btn="circle").contact__link
+            +icon('linked-in-icon', 132, 132)
+      p.contact__footer Thank you for your visit 🖤

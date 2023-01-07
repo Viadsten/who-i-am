@@ -17,4 +17,20 @@
   @include vp-767 {
     padding: 0 size($pd-sm);
   }
+
+  &--slim {
+    padding: 0 size(130px);
+
+    @include vp-1439 {
+      padding: 0 size(80px);
+    }
+
+    @include vp-1023 {
+      padding: 0 size(30px);
+    }
+
+    @include vp-767 {
+      padding: 0 size($pd-sm);
+    }
+  }
 }

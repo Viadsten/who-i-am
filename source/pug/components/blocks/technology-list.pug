@@ -1,0 +1,42 @@
+-
+  const listData = {
+    items: [
+      {
+        title: 'Web basic',
+        description: 'css, scss / sass / stylus<br>html, pug, twig<br>js, es6'
+      },
+      {
+        title: 'Animation',
+        description: 'GSAP, LocomotiveScroll<br>svg, lottie<br>canvas basics<br>learning webgl :з'
+      },
+      {
+        title: 'Work<br>automation',
+        description: 'webpack, gulp, ci/cd, gitHub Actions'
+      },
+      {
+        title: 'Plugins & Api',
+        description: 'GoogleMap, MapBox,Firebase, flatpickr, swiper'
+      },
+      {
+        title: 'Deal with it',
+        description: 'php, openserver, genkins, bootstrap, jquery, docker, bitrix..'
+      },
+    ]
+  }
+
+mixin technology-list()
+  section.technology-list(data-animate-technology-list)
+    .container.container--slim
+      .technology-list__title-col
+        .locomotive-sticky#technology-list-sticky
+        .technology-list__sticky.sticky-block(data-scroll-target="#technology-list-sticky" data-scroll data-scroll-sticky)
+          .technology-list__title-container
+            p.technology-list__title-quote.title.title--medium “
+            each item in listData.items
+              p.technology-list__title.title.title--small.title--lowercase(data-animate-technology-list="title", data-splitting)!=item.title
+
+      .technology-list__description-col
+        each item in listData.items
+          .technology-list__description-container(data-animate-technology-list="description")
+            p.technology-list__description.title.title--medium.title--lowercase!=item.description
+

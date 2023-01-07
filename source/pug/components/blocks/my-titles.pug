@@ -1,0 +1,13 @@
+mixin my-titles()
+  section.horizontal-section.horizontal-section--my-title(data-animate-horizontal="my-titles")
+    h2.visually-hidden Frontend developer, teamlead
+    .locomotive-sticky#my-titles-sticky
+    .horizontal-section__sticky.sticky-block(data-scroll data-scroll-sticky data-scroll-target="#my-titles-sticky")
+      .horizontal-section__container.container
+        .my-titles(data-animate-my-titles)
+          .my-titles__row(data-animate-my-titles="frontend")
+            p.title.my-titles__title Frontend
+          .my-titles__row(data-animate-my-titles="developer")
+            p.title.title--center.my-titles__title developer
+          .my-titles__row
+            p.title.title--justify.my-titles__title Team lead

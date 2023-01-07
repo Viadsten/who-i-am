@@ -4,14 +4,18 @@
   font-family: $ff-mulish;
   font-size: size(164px);
   line-height: size(164px);
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: size(-6.8px);
   color: $color-default-black;
 
   &--medium {
-    font-size: size(82px);
-    line-height: size(82px);
+    font-size: size(65px);
+    line-height: size(75px);
+  }
+
+  &--small {
+    font-size: size(37px);
+    line-height: size(37px);
   }
 
   &--stroke {
@@ -24,8 +28,8 @@
     text-transform: none;
   }
 
-  &--wide {
-    letter-spacing: unset;
+  &--narrow-spacing {
+    letter-spacing: size(-6.8px);
   }
 
   &--right {
