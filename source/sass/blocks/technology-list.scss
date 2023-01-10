@@ -1,6 +1,7 @@
 .technology-list {
   position: relative;
   transform: translate3d(0, 0, 0);
+  margin-top: -100vh;
 
   .container {
     display: flex;
@@ -11,6 +12,17 @@
     position: relative;
 
     width: size(300px);
+
+    @include vp-767 {
+      z-index: 2;
+      overflow: visible;
+    }
+  }
+
+  &__sticky {
+    @include vp-767 {
+      overflow: visible;
+    }
   }
 
   &__title-container {
@@ -28,20 +40,30 @@
 
   &__title {
     position: absolute;
-    top: size(30px);
+    top: size(25px);
     left: size(40px);
     transform: translate3d(0, 0, 0);
 
     &[data-animate-technology-list="title"] {
+      perspective: 1000px;
+
+      @include vp-767 {
+        font-size: size(60px);
+        white-space: nowrap;
+        mix-blend-mode: difference;
+      }
+
       .word {
         overflow: hidden;
+        line-height: 120%;
       }
 
       .char {
-        transform: translate3d(0, 100%, 0);
+        //transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0) rotateX(40deg);
 
-        transition: transform 0.15s;
-        transition-delay: calc(10ms * var(--char-index));
+        transition: transform 0.4s;
+        transition-delay: calc(8ms * var(--char-index));
       }
 
       &.is-shown {
@@ -52,9 +74,18 @@
 
       &.is-hidden-up {
         .char {
-          transform: translate3d(0, -100%, 0);
+          transform: translate3d(0, -100%, 0) rotateX(-40deg);
         }
       }
+    }
+  }
+
+  [data-animate-technology-list="quote"] {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+    &.is-shown {
+      opacity: 1;
     }
   }
 
@@ -65,11 +96,20 @@
     padding-top: 80vh;
     padding-bottom: 30vh;
     width: size(740px);
+
+    @include vp-767() {
+
+    }
   }
 
   &__description {
     position: relative;
-    transform: translate3d(0, 0, 0);
+    display: block;
+
+    br {
+      transform: translate3d(0, 0, 0);
+
+    }
 
     &::after {
       content: ' ”';

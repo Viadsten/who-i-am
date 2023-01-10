@@ -5,6 +5,7 @@ import {scrollTrigger} from "../smooth-scroll/init-scroll-trigger.js";
 export class HorizontalTechnologyTitle {
   constructor() {
     this.container = document.querySelector('[data-animate-horizontal="technology-title"]');
+    console.log(this.container)
     if (!this.container) {
       return;
     }
@@ -14,7 +15,9 @@ export class HorizontalTechnologyTitle {
     this.titleChars = this.title.querySelectorAll('.char');
 
     this.timeline = null;
-    this.touchVp = window.matchMedia('(pointer: coarse');
+    this.touchVp = window.matchMedia('(pointer: coarse)');
+    this.mediaOrientationPortret = () => (window.innerWidth - window.innerHeight < 0) ? true : false; // custom)
+
     this.randomDirection = gsap.utils.random([-1, 1], true);
     this.randomOffset = gsap.utils.random(window.innerHeight / 3, window.innerHeight / 8, 1, true);
     this.randomScale = gsap.utils.random(0.3, 0.85, 0, true);
@@ -23,10 +26,15 @@ export class HorizontalTechnologyTitle {
     this.calculateHeight = this.calculateHeight.bind(this);
 
     resizeObserver.subscribe(this.init);
+
+    this.init();
   }
 
   calculateHeight() {
-    this.container.style.height = this.content.getBoundingClientRect().width + 'px';
+    this.height = this.mediaOrientationPortret()
+      ? window.innerHeight * 5 + this.content.getBoundingClientRect().width
+      : this.content.getBoundingClientRect().width;
+    this.container.style.height = this.height + 'px';
   }
 
   killTimeline() {
@@ -34,17 +42,20 @@ export class HorizontalTechnologyTitle {
     this.timeline = null;
 
     gsap.set(this.content, {clearProps: 'transform'});
+
+    this.titleTimeline.seek(0).kill();
+    this.titleTimeline = null;
   }
 
   init() {
     this.calculateHeight();
-
-    if (this.timeline) {
+    // console.log(this.height)
+    if (this.timeline || this.titleTimeline) {
       this.killTimeline();
     }
 
     this.timeline = gsap.to(this.content, {
-      x: () => -this.content.getBoundingClientRect().width,
+      x: () => -this.content.getBoundingClientRect().width - window.innerWidth / 10,
       ease: 'none',
     });
 
@@ -88,7 +99,7 @@ export class HorizontalTechnologyTitle {
     scrollTrigger.create({
       trigger: '[data-animate-technology-title] .title',
       scroller: '[data-scroll-container]',
-      start: 'left 70%',
+      start: 'left 90%',
       end: 'right center',
       animation: this.titleTimeline,
       containerAnimation: this.timeline,

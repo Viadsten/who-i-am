@@ -10,6 +10,7 @@ export class TechnologyList {
 
     this.titles = this.container.querySelectorAll('[data-animate-technology-list="title"]');
     this.descriptions = this.container.querySelectorAll('[data-animate-technology-list="description"]');
+    this.quote = this.container.querySelector('[data-animate-technology-list="quote"]');
 
     this.timeline = null;
     this.touchVp = window.matchMedia('(pointer: coarse)');
@@ -55,7 +56,20 @@ export class TechnologyList {
       end: 'bottom bottom',
       onUpdate: () => {
         this.checkActiveTitle();
-      }
+      },
+      onLeaveBack: () => {
+        this.titles.forEach((title) => title.classList.remove('is-shown'));
+        this.quote.classList.remove('is-shown');
+      },
+      onLeave: () => {
+        this.quote.classList.remove('is-shown');
+      },
+      onEnter: () => {
+        this.quote.classList.add('is-shown');
+      },
+      onEnterBack: () => {
+        this.quote.classList.add('is-shown');
+      },
     });
   }
 }

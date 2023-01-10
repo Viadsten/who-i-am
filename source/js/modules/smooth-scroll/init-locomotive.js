@@ -23,7 +23,7 @@ const initLocomotiveScroll = () => {
 
   // обновляем скролл по ресайзу
   const resizeObserver = new ResizeObserver(() => {
-    locomotive.update();
+    // locomotive.update();
   });
 
   resizeObserver.observe(document.documentElement);

@@ -31,7 +31,7 @@ mixin technology-list()
         .locomotive-sticky#technology-list-sticky
         .technology-list__sticky.sticky-block(data-scroll-target="#technology-list-sticky" data-scroll data-scroll-sticky)
           .technology-list__title-container
-            p.technology-list__title-quote.title.title--medium “
+            p.technology-list__title-quote.title.title--medium(data-animate-technology-list="quote") “
             each item in listData.items
               p.technology-list__title.title.title--small.title--lowercase(data-animate-technology-list="title", data-splitting)!=item.title
 

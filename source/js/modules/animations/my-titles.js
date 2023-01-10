@@ -58,11 +58,11 @@ export class MyTitles {
       clipPath: 'polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%)',
     }, 0);
 
-    this.bgScrollTrigger = scrollTrigger.create({
+    scrollTrigger.create({
       scroller: '[data-scroll-container]',
       trigger: '[data-animate-horizontal="my-titles"]',
-      start: () => `top top-=${window.innerHeight * 1}`,
-      end: () => `+=${window.innerHeight * 3}`,
+      start: () => `top top-=${window.innerHeight * 2}`,
+      end: () => `+=${window.innerHeight * 2}`,
       animation: this.bgTimeline,
       scrub: true,
       invalidateOnRefresh: true,

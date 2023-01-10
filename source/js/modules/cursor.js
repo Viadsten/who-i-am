@@ -9,9 +9,20 @@ export class Cursor {
 
     this.mediaTouchDevice = matchMedia('(pointer: coarse)');
     this.cursor = null;
+    this.scaleTimeline = null;
     this.ease = 0.15;
     this.pos = {x: 0, y: 0};
     this.mouse = {x: 0, y: 0};
+    this.posPrev = {x: 0, y: 0};
+    this.movementPos = {x: 0, y: 0};
+    this.direction = {x: 0, y: 0};
+    this.prevEvent = null;
+    this.speed = {
+      max: 0,
+      prev: 0,
+      maxPositiveAcc: 0,
+      maxNegativeAcc: 0,
+    };
 
     this.clickIsPlaying = false;
     this.circleBtnInView = false;
@@ -19,10 +30,13 @@ export class Cursor {
     this.breakpointChecker = this.breakpointChecker.bind(this);
     this.setListeners = this.setListeners.bind(this);
     this.updatePosition = this.updatePosition.bind(this);
+    this.calculateVelocity = this.calculateVelocity.bind(this);
     this.handlerMouseMove = this.handlerMouseMove.bind(this);
     this.clickCursorAnimation = this.clickCursorAnimation.bind(this);
     this.hideCursor = this.hideCursor.bind(this);
     this.showCursor = this.showCursor.bind(this);
+    this.setPosPrev = this.setPosPrev.bind(this);
+    this.setSkewTransform = this.setSkewTransform.bind(this);
 
     this.init();
   }
@@ -40,6 +54,43 @@ export class Cursor {
     );
   }
 
+  calculateVelocity() {
+    const movementPos = {
+      x: Math.abs(this.pos.x - this.posPrev.x),
+      y: Math.abs(this.pos.y - this.posPrev.y),
+    };
+    this.movementPos = {x: movementPos.x, y: movementPos.y};
+    this.movement = Math.sqrt(movementPos.x * movementPos.x + movementPos.y * movementPos.y);
+  }
+
+  setSkewTransform() {
+    const skew = {
+      x: gsap.utils.clamp(0, 30, this.movementPos.x * 0.25),
+      y: gsap.utils.clamp(0, 30, this.movementPos.y * 0.25),
+    };
+
+    const skewRotate = (this.direction.x === 1 && this.direction.y === 1) || (this.direction.x === -1 && this.direction.y === -1) ? 1 : -1;
+    const height = 100 + gsap.utils.clamp(0, 40, this.movementPos.y - this.movementPos.x) - gsap.utils.clamp(0, 20, this.movementPos.x - this.movementPos.y);
+    const width = 100 + gsap.utils.clamp(0, 40, this.movementPos.x - this.movementPos.y) - gsap.utils.clamp(0, 20, this.movementPos.y - this.movementPos.x);
+
+    const skewValue = gsap.utils.clamp(-20, 20, skew.x * skew.y * skewRotate);
+
+    gsap.to(this.cursorContent, {
+      duration: 0.005,
+      ease: 'Power1.inOut',
+      transform: `skewX(${skewValue}deg)  skewY(${0}deg) translate3d(-50%, -50%, 0)`,
+      height: height + '%',
+      width: width + '%',
+    });
+  }
+
+  setPosPrev() {
+    this.posPrev = {
+      x: this.pos.x,
+      y: this.pos.y,
+    };
+  }
+
   handlerMouseMove(evt) {
     if (evt && evt.type === 'mousemove') {
       this.evt = evt;
@@ -52,7 +103,11 @@ export class Cursor {
       const btnRect = btnCircle.getBoundingClientRect();
       const cursorRect = this.cursor.getBoundingClientRect();
       if (!this.circleBtnInView) {
-        gsap.to(this.cursorContent, {scale: ((btnRect.width / cursorRect.width).toFixed(2)), duration: 0.4, ease: 'Power1.out'});
+        if (this.scaleTimeline) {
+          this.scaleTimeline.kill();
+        }
+
+        this.scaleTimeline = gsap.to(this.cursorContent, {scale: ((btnRect.width / cursorRect.width).toFixed(2) - 0.3), duration: 0.4, ease: 'Power1.out'});
         this.circleBtnInView = true;
       }
 
@@ -65,7 +120,11 @@ export class Cursor {
       this.mouse.y = pos.y;
     } else {
       if (this.circleBtnInView) {
-        gsap.to(this.cursorContent, {scale: 1, duration: 0.6, ease: 'Power3.out'});
+        if (this.scaleTimeline) {
+          this.scaleTimeline.kill();
+        }
+
+        this.scaleTimeline = gsap.to(this.cursorContent, {scale: 1, duration: 0.6, ease: 'Power3.out'});
         this.circleBtnInView = false;
       }
 
@@ -79,11 +138,16 @@ export class Cursor {
     this.pos.y += (this.mouse.y - this.pos.y) * this.ease;
 
     gsap.to(this.cursor, {
-      duration: this.circleBtnInView ? 0.15 : 0.35,
+      duration: this.circleBtnInView ? 0.15 : 0.15,
       ease: 'Power2.inOut',
       x: this.pos.x,
       y: this.pos.y,
     });
+
+    this.direction = {
+      x: gsap.utils.clamp(1, -1, this.posPrev.x - this.pos.x),
+      y: gsap.utils.clamp(1, -1, this.posPrev.y - this.pos.y),
+    };
   }
 
   hideCursor() {
@@ -110,6 +174,8 @@ export class Cursor {
   removeListeners() {
     this.cursor.classList.remove('is-initialized');
     gsap.ticker.remove(this.updatePosition);
+    gsap.ticker.remove(this.calculateVelocity);
+    clearInterval(this.posPrev.interval);
     document.removeEventListener('mousemove', this.handlerMouseMove);
     window.removeEventListener('click', this.clickCursorAnimation);
   }
@@ -117,10 +183,12 @@ export class Cursor {
   setListeners() {
     this.cursor.classList.add('is-initialized');
     gsap.ticker.add(this.updatePosition);
+    gsap.ticker.add(this.calculateVelocity);
+    gsap.ticker.add(this.setSkewTransform);
+    this.posPrev.interval = setInterval(this.setPosPrev, 10);
     document.addEventListener('mousemove', this.handlerMouseMove);
     window.addEventListener('click', this.clickCursorAnimation);
     scrollObserver.subscribe(() => this.handlerMouseMove());
-
   }
 
   breakpointChecker() {

@@ -28,10 +28,10 @@ html {
   //font-size: $fz-default;
   font-size: size-desktop($fz-default);
 
- //@include vp-1439 {
- //  font-size: size-desktop($fz-default);
- //
- //}
+ @include vp-1023 {
+   font-size: size-desktop(24px);
+
+ }
 }
 
 body {

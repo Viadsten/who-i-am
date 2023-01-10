@@ -17,7 +17,8 @@ export class EventObserver {
 }
 
 const resizeObserver = new EventObserver();
-const resizeObserverProto = new ResizeObserver(() => setTimeout(() => resizeObserver.fire('resize'), 10));
+const vpTouch = () => { return window.matchMedia('(pointer: coarse)'); };
+const resizeObserverProto = new ResizeObserver(() => setTimeout(() => !vpTouch().matches ? resizeObserver.fire('resize') : '', 10));
 resizeObserverProto.observe(document.documentElement);
 
 export {resizeObserver};
