@@ -944,6 +944,10 @@ html.has-scroll-smooth .sticky-block {
   text-align-last: justify;
 }
 
+.title--white {
+  color: #ffffff;
+}
+
 .title--orange {
   color: #ffb320;
 }
@@ -1626,19 +1630,51 @@ html.has-scroll-smooth .sticky-block {
   position: relative;
   min-height: 200vh;
   height: 200vh;
+  background-color: #000000;
+}
+
+.intro + section {
+  margin-top: -98vh;
+}
+
+.intro__canvas {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.intro__canvas canvas {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .intro__inner {
+  position: relative;
+  padding: 3.75rem 0;
+  z-index: 2;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: end;
   height: 100vh;
   max-height: 100vh;
   min-height: 100vh;
@@ -1723,6 +1759,7 @@ html.has-scroll-smooth .sticky-block {
 
 .horizontal-section {
   position: relative;
+  z-index: 2;
   min-height: 100vh;
 }
 
@@ -1731,6 +1768,11 @@ html.has-scroll-smooth .sticky-block {
   min-width: -webkit-max-content;
   min-width: -moz-max-content;
   min-width: max-content;
+}
+
+.horizontal-section--my-title {
+  margin-top: -80vh;
+  z-index: 3;
 }
 
 .horizontal-section--my-title .horizontal-section__container {
@@ -1766,12 +1808,12 @@ html.has-scroll-smooth .sticky-block {
 .cursor {
   position: fixed;
   z-index: 100;
-  top: -1.25rem;
-  left: -1.25rem;
+  top: 0rem;
+  left: 0rem;
   -webkit-transform: translate3d(-50%, -50%, 0);
   transform: translate3d(-50%, -50%, 0);
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 1.875rem;
+  height: 1.875rem;
   background-color: transparent;
   mix-blend-mode: exclusion;
   pointer-events: none;
@@ -2017,6 +2059,78 @@ html.has-scroll-smooth .sticky-block {
   text-align: center;
 }
 
+.about {
+  position: relative;
+  z-index: 3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 100vh;
+  padding: 18.75rem 0;
+  background: #ffffff;
+}
+
+.about .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.about__img {
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  width: 26.875rem;
+  height: 26.875rem;
+}
+
+.about__img video {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+  object-fit: contain;
+  -o-object-position: bottom;
+  object-position: bottom;
+}
+
+.about__description {
+  position: relative;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  margin-left: 4.375rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.about__text {
+  position: relative;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  margin: 0;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  font-size: 1.75rem;
+  line-height: 2.125rem;
+}
+
+.about__text:not(:last-child) {
+  margin-bottom: 1.625rem;
+}
+
 @media (max-width: 1439px) {
   .container {
     padding: 0 2rem;
@@ -2027,7 +2141,7 @@ html.has-scroll-smooth .sticky-block {
   }
 
   .horizontal-section--technology-title {
-    margin-top: -150vh;
+    margin-top: -250vh;
   }
 }
 
