@@ -1,11 +1,11 @@
 .cursor {
   position: fixed;
   z-index: 100;
-  top: size(-20px);
-  left: size(-20px);
+  top: size(0px);
+  left: size(0px);
   transform: translate3d(-50%, -50%, 0);
-  width: size(40px);
-  height: size(40px);
+  width: size(30px);
+  height: size(30px);
   background-color: transparent;
   mix-blend-mode: exclusion;
   pointer-events: none;

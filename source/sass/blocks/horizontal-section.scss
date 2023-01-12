@@ -1,5 +1,6 @@
 .horizontal-section {
   position: relative;
+  z-index: 2;
 
   min-height: 100vh;
 
@@ -9,6 +10,9 @@
   }
 
   &--my-title {
+    margin-top: -80vh;
+    z-index: 3;
+
     .horizontal-section__container {
       padding-right: 0;
     }
@@ -18,7 +22,7 @@
     margin-top: -250vh;
 
     @include vp-1439 {
-      margin-top: -150vh;
+      margin-top: -250vh;
     }
 
     .horizontal-section__container {

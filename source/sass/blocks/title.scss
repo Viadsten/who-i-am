@@ -44,6 +44,10 @@
     text-align-last: justify;
   }
 
+  &--white {
+    color: $color-default-white;
+  }
+
   &--orange {
     color: $color-dark-tangerine;
   }

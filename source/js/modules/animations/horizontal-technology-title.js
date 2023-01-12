@@ -5,7 +5,7 @@ import {scrollTrigger} from "../smooth-scroll/init-scroll-trigger.js";
 export class HorizontalTechnologyTitle {
   constructor() {
     this.container = document.querySelector('[data-animate-horizontal="technology-title"]');
-    console.log(this.container)
+
     if (!this.container) {
       return;
     }

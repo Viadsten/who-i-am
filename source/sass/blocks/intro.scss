@@ -4,10 +4,44 @@
   min-height: 200vh;
   height: 200vh;
 
+  background-color: $color-default-black;
+
+  & + section {
+    margin-top: -98vh;
+  }
+
+  &__canvas {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    canvas {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+
+      width: 100%;
+      height: 100%;
+    }
+  }
+
   &__inner {
+    position: relative;
+    padding: size(60px) 0;
+    z-index: 2;
+
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
 
     height: 100vh;
     max-height: 100vh;

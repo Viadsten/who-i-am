@@ -62,7 +62,7 @@ export class MyTitles {
       scroller: '[data-scroll-container]',
       trigger: '[data-animate-horizontal="my-titles"]',
       start: () => `top top-=${window.innerHeight * 2}`,
-      end: () => `+=${window.innerHeight * 2}`,
+      end: () => `+=${window.innerHeight * 2.5}`,
       animation: this.bgTimeline,
       scrub: true,
       invalidateOnRefresh: true,

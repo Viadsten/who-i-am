@@ -26,7 +26,6 @@ export class HorizontalMyTitles {
   }
 
   calculateHeight() {
-    console.log(this.mediaOrientationPortret())
     this.height = this.mediaOrientationPortret()
       ? window.innerHeight * 4 + this.content.getBoundingClientRect().width
       : window.innerWidth * 3 + this.content.getBoundingClientRect().width;
@@ -66,7 +65,6 @@ export class HorizontalMyTitles {
       x: () => window.innerWidth - this.content.getBoundingClientRect().width,
       ease: 'none',
     });
-    console.log(this.mediaOrientationPortret())
 
     scrollTrigger.create({
       trigger: this.container,
@@ -88,7 +86,7 @@ export class HorizontalMyTitles {
       scrollTrigger.create({
         trigger: this.container,
         scroller: '[data-scroll-container]',
-        start: () => `top top-=${window.innerHeight + this.height / 2}`,
+        start: () => `top top-=${(this.height * 2.5) / 4}`,
         end: () => `+=${this.height / 4}`,
         animation: this.hideTimeline,
         scrub: this.touchVp ? 1 : true,

@@ -3,8 +3,8 @@ mixin intro()
     .locomotive-sticky#intro-sticky
     .intro__sticky.sticky-block(data-scroll-target="#intro-sticky" data-scroll data-scroll-sticky)
       .container
+        .intro__canvas(data-animate-intro="canvas")
         h1.visually-hidden Hello! I am web developer, and i love it
-        .intro__inner(data-animate-intro="title")
-          span.title.title--narrow-spacing.intro__title.intro__title--big(data-splitting) HELLO!
-          span.title.title--narrow-spacing.title--right.intro__title.intro__title--medium(data-splitting, data-delay="0.8") I am web developer
-          span.title.title--narrow-spacing.title--right.title--orange.title--lowercase.intro__title.intro__title--small(data-splitting, data-delay="2.5") and i love it
+        .intro__inner(data-animate-intro="content")
+          span.title.title--medium.title--white.title--lowercase(data-animate-intro="web-developer") web developer
+          span.title.title--small.title--white.title--lowercase(data-animate-intro="scroll") scroll
