@@ -1,4 +1,4 @@
-import {scrollObserver} from "../utils/observers.js";
+import {scrollObserver} from '../utils/observers.js';
 
 export class Cursor {
   constructor() {
@@ -16,7 +16,6 @@ export class Cursor {
     this.posPrev = {x: 0, y: 0};
     this.movementPos = {x: 0, y: 0};
     this.direction = {x: 0, y: 0};
-    this.prevEvent = null;
     this.speed = {
       max: 0,
       prev: 0,
@@ -64,6 +63,10 @@ export class Cursor {
   }
 
   setSkewTransform() {
+    if (this.circleBtnInView) {
+      return;
+    }
+
     const skew = {
       x: gsap.utils.clamp(0, 30, this.movementPos.x * 0.25),
       y: gsap.utils.clamp(0, 30, this.movementPos.y * 0.25),
@@ -78,7 +81,9 @@ export class Cursor {
     gsap.to(this.cursorContent, {
       duration: 0.005,
       ease: 'Power1.inOut',
-      transform: `skewX(${skewValue}deg)  skewY(${0}deg) translate3d(-50%, -50%, 0)`,
+      // transform: `skewX(${skewValue}deg)  skewY(${0}deg) translate3d(-50%, -50%, 0)`,
+      skewX: skewValue,
+      skewY: 0,
       height: height + '%',
       width: width + '%',
     });
@@ -107,7 +112,16 @@ export class Cursor {
           this.scaleTimeline.kill();
         }
 
-        this.scaleTimeline = gsap.to(this.cursorContent, {scale: ((btnRect.width / cursorRect.width).toFixed(2) - 0.3), duration: 0.4, ease: 'Power1.out'});
+        this.scaleTimeline = gsap.to(this.cursorContent, {
+          scale: ((btnRect.width / cursorRect.width).toFixed(2) - 0.3),
+          duration: 0.3,
+          skewX: 0,
+          skewY: 0,
+          width: '100%',
+          height: '100%',
+          ease: 'Power1.out',
+          overwrite: true,
+        });
         this.circleBtnInView = true;
       }
 
@@ -165,7 +179,7 @@ export class Cursor {
     }
     this.handlerMouseMove();
     this.clickIsPlaying = true;
-    gsap.to(this.cursor, {scale: 0.85, yoyo: true, repeat: 1, ease: 'power1.out', duration: 0.3})
+    gsap.to(this.cursor, {scale: 0.85, yoyo: true, repeat: 1, ease: 'power1.out', duration: 0.15, overwrite: true})
         .then(() => {
           this.clickIsPlaying = false;
         });
