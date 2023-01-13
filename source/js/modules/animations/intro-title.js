@@ -144,7 +144,7 @@ export class IntroTitle3d {
 
   loadFont() {
     const loader = new FontLoader();
-    loader.load('./../fonts/Mulish-Regular.json', this.fontPromise);
+    loader.load('./fonts/Mulish-Regular.json', this.fontPromise);
   }
 
   createText() {
