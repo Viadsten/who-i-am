@@ -3,6 +3,7 @@
   z-index: 2;
 
   min-height: 100vh;
+  pointer-events: none;
 
   .horizontal-section__container {
     max-width: unset;
@@ -19,7 +20,7 @@
   }
 
   &--technology-title {
-    margin-top: -250vh;
+    margin-top: -350vh;
 
     @include vp-1439 {
       margin-top: -250vh;
@@ -27,8 +28,14 @@
 
     .horizontal-section__container {
       padding-right: 20vw;
+      pointer-events: none;
+
     }
 
+
+    .technology-stack {
+      pointer-events: all;
+    }
 
     @include vp-767 {
       margin-top: 0;

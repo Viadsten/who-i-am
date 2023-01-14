@@ -3,7 +3,8 @@ import {iosChecker} from './ios-checker';
 export class ScrollLock {
   constructor() {
     this._iosChecker = iosChecker;
-    this._lockClass = this._iosChecker() ? 'scroll-lock-ios' : 'scroll-lock';
+    // this._lockClass = this._iosChecker() ? 'scroll-lock-ios' : 'scroll-lock';
+    this._lockClass = 'scroll-lock';
     this._scrollTop = null;
     this._fixedBlockElements = document.querySelectorAll('[data-fix-block]');
   }
@@ -20,7 +21,7 @@ export class ScrollLock {
     );
   }
 
-  disableScrolling() {
+  disableScrolling(top = false) {
     this._scrollTop = document.body.dataset.scroll = document.body.dataset.scroll ? document.body.dataset.scroll : this._getBodyScrollTop();
     if (this._getScrollbarWidth()) {
       document.body.style.paddingRight = `${this._getScrollbarWidth()}px`;
@@ -28,7 +29,12 @@ export class ScrollLock {
         block.style.paddingRight = `${this._getScrollbarWidth()}px`;
       });
     }
-    document.body.style.top = `-${this._scrollTop}px`;
+    if (top) {
+      document.body.style.top = '0px';
+    } else {
+      document.body.style.top = `-${this._scrollTop}px`;
+    }
+
     document.body.classList.add(this._lockClass);
   }
 

@@ -1,3 +1,17 @@
+html {
+  @media screen and (pointer: coarse) {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+
+    .wrapper {
+      overflow: auto;
+      max-height: 100vh;
+      max-height: calc(100 * var(--vh, 1vh));
+    }
+  }
+}
+
 .wrapper {
   position: relative;
 
@@ -41,6 +55,8 @@
 }
 
 .scroll-lock {
+  position: fixed;
+
   overflow: hidden;
 }
 
@@ -108,5 +124,6 @@ html.has-scroll-smooth {
   &--black {
     clip-path: polygon(120% 0%, 100% 100%, 100% 100%, 100% 0);
     mix-blend-mode: difference;
+    z-index: 100;
   }
 }

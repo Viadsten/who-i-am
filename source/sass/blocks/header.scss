@@ -1,13 +1,26 @@
 .header {
-  padding: 28px 0;
+  position: fixed;
+  z-index: 90;
+  top: 0;
+  left: 0;
+  right: 0;
 
-  background-color: $color-neon-blue;
+  padding: size(28px) 0;
+  width: 100%;
+
+  background-color: $color-transparent;
 
   .container {
     display: flex;
   }
 
   &__logo {
-    color: $color-default-white;
+    color: $color-default-black;
+    font-size: size(22px);
+    font-weight: 500;
+
+    @include vp-767 {
+      font-size: size(40px);
+    }
   }
 }

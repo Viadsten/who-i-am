@@ -4,7 +4,7 @@ import {TextGeometry} from "../../vendor/three-js/TextGeometry.js";
 import {scrollTrigger} from "../smooth-scroll/init-scroll-trigger.js";
 import {resizeObserver} from "../../utils/observers.js";
 
-export class IntroTitle3d {
+export class IntroTitle {
   constructor() {
     this.container = document.querySelector('[data-animate-intro]');
     if (!this.container) {

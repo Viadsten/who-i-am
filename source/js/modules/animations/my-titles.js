@@ -1,7 +1,7 @@
-import {scrollTrigger} from "../smooth-scroll/init-scroll-trigger.js";
+import {scrollTrigger} from '../smooth-scroll/init-scroll-trigger.js';
 
 export class MyTitles {
-  constructor(containerTimeline) {
+  constructor(containerTimeline, containerHeight) {
     this.container = document.querySelector('[data-animate-my-titles]');
 
     if (!this.container) {
@@ -11,6 +11,7 @@ export class MyTitles {
     this.titles = this.container.querySelectorAll('.title');
 
     this.containerTimeline = containerTimeline;
+    this.containerHeight = containerHeight;
 
     this.init();
   }
@@ -61,8 +62,8 @@ export class MyTitles {
     scrollTrigger.create({
       scroller: '[data-scroll-container]',
       trigger: '[data-animate-horizontal="my-titles"]',
-      start: () => `top top-=${window.innerHeight * 2}`,
-      end: () => `+=${window.innerHeight * 2.5}`,
+      start: () => `top top-=${this.containerHeight / 4}`,
+      end: () => `+=${this.containerHeight / 4}`,
       animation: this.bgTimeline,
       scrub: true,
       invalidateOnRefresh: true,

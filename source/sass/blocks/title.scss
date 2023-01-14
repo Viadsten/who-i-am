@@ -16,6 +16,11 @@
   &--small {
     font-size: size(37px);
     line-height: size(37px);
+
+    @include vp-767 {
+      font-size: size(50px);
+      line-height: size(50px);
+    }
   }
 
   &--stroke {

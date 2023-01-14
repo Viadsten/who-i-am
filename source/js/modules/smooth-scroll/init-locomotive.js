@@ -1,11 +1,13 @@
 import * as LocomotiveScroll from '../../vendor/locomotive-scroll.js';
+import {resizeObserver} from "../../utils/observers.js";
 
 let locomotive;
 
 const initLocomotiveScroll = () => {
   const el = document.querySelector('[data-scroll-container]');
+  const vpTouch = window.matchMedia('(pointer: coarse)');
 
-  if (!el) {
+  if (!el || vpTouch.matches) {
     return;
   }
 
@@ -22,11 +24,7 @@ const initLocomotiveScroll = () => {
   });
 
   // обновляем скролл по ресайзу
-  const resizeObserver = new ResizeObserver(() => {
-    // locomotive.update();
-  });
-
-  resizeObserver.observe(document.documentElement);
+  // resizeObserver.subscribe(locomotive.update);
   window.locomotive = locomotive;
 };
 

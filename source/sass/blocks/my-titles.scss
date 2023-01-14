@@ -9,8 +9,11 @@
   flex-direction: column;
   justify-content: center;
 
+  pointer-events: none;
+
   &__title {
     font-weight: 400;
+    pointer-events: all;
 
     &:not(:last-child) {
       margin-bottom: size(20px);

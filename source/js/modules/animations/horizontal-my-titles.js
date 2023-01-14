@@ -52,7 +52,7 @@ export class HorizontalMyTitles {
       this.myTitles = null;
     }
 
-    this.myTitles = new MyTitles(this.timeline);
+    this.myTitles = new MyTitles(this.timeline, this.height);
   }
 
   init() {
@@ -66,6 +66,7 @@ export class HorizontalMyTitles {
       ease: 'none',
     });
 
+    console.log(this.mediaOrientationPortret());
     scrollTrigger.create({
       trigger: this.container,
       scroller: '[data-scroll-container]',
@@ -86,7 +87,7 @@ export class HorizontalMyTitles {
       scrollTrigger.create({
         trigger: this.container,
         scroller: '[data-scroll-container]',
-        start: () => `top top-=${(this.height * 2.5) / 4}`,
+        start: () => `top top-=${this.height / 2}`,
         end: () => `+=${this.height / 4}`,
         animation: this.hideTimeline,
         scrub: this.touchVp ? 1 : true,

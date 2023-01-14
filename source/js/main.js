@@ -1,19 +1,13 @@
 import {iosVhFix} from './utils/ios-vh-fix';
 import {initModals} from './modules/modals/init-modals';
-import {Form} from './modules/form-validate/form';
-import {CustomSelect} from './modules/select/custom-select';
 import {initLocomotiveScroll, locomotive} from "./modules/smooth-scroll/init-locomotive.js";
 import {initScrollTrigger, scrollTrigger} from "./modules/smooth-scroll/init-scroll-trigger.js";
 import {initAnimationModule} from "./modules/animations/index.js";
-import {ScrollLock} from "./utils/scroll-lock.js";
-import {Cursor} from "./modules/cursor.js";
 import {initScrollObserver} from "./utils/observers.js";
+import {Loader} from "./modules/loader.js";
 // ---------------------------------
 
 window.addEventListener('DOMContentLoaded', () => {
-  window.scrollTo(0, 0);
-  const loaderScrollLock = new ScrollLock();
-  loaderScrollLock.disableScrolling();
   // Utils
   // ---------------------------------
 
@@ -25,23 +19,14 @@ window.addEventListener('DOMContentLoaded', () => {
   // все скрипты должны быть в обработчике 'DOMContentLoaded', но не все в 'load'
   // в load следует добавить скрипты, не участвующие в работе первого экрана
   window.addEventListener('load', () => {
-    loaderScrollLock.enableScrolling();
-
     initModals();
-
-
-    setTimeout(() => {
-      window.scrollTo(0, 0);
-    }, 1);
 
     setTimeout(() => {
       initLocomotiveScroll();
       initScrollTrigger();
       initScrollObserver();
       initAnimationModule();
-
-      new Cursor();
-      console.log('install');
+      new Loader();
     }, 5);
 
     setTimeout(() => {

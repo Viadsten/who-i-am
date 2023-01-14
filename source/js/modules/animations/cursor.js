@@ -1,4 +1,4 @@
-import {scrollObserver} from '../utils/observers.js';
+import {scrollObserver} from "../../utils/observers.js";
 
 export class Cursor {
   constructor() {

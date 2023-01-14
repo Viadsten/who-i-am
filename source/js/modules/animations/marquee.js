@@ -1,4 +1,5 @@
 import {scrollTrigger} from "../smooth-scroll/init-scroll-trigger.js";
+import {resizeObserver} from "../../utils/observers.js";
 
 export class Marquee {
   constructor() {
@@ -10,7 +11,11 @@ export class Marquee {
     this.clamp = gsap.utils.clamp(-40, 40);
     this.speedScaleTimeout = null;
     this.direction = 1;
+    this.marqueeTimeline = null;
 
+    this.init = this.init.bind(this);
+
+    resizeObserver.subscribe(this.init);
     this.init();
   }
 
@@ -19,13 +24,21 @@ export class Marquee {
 
     this.marqueeTimeline.to(this.items, {
       duration: 30,
-      ease: "none",
+      ease: 'none',
       x: -this.itemWidth,
-      // modifiers: {
-      //   x: gsap.utils.unitize(x => parseFloat(x) % this.itemWidth) //force x value to be between 0 and itemWidth using modulus
-      // },
+      modifiers: {
+        x: gsap.utils.unitize((x) => parseFloat(x) % this.itemWidth), //force x value to be between 0 and itemWidth using modulus
+      },
       repeat: -1,
     }).totalProgress(0.5);
+  }
+
+  removeCloneItems() {
+    this.items.forEach((item, index) => {
+      if (index !== 0) {
+        item.remove();
+      }
+    });
   }
 
   renderCloneItems() {
@@ -33,7 +46,7 @@ export class Marquee {
     const duplicateCount = Math.ceil(window.innerWidth / this.itemWidth);
 
     for (let i = 0; i < duplicateCount; i++) {
-      this.inner.insertAdjacentHTML('beforeend', this.cloneItem)
+      this.inner.insertAdjacentHTML('beforeend', this.cloneItem);
     }
 
     this.items = this.container.querySelectorAll('.marquee__item');
@@ -49,7 +62,7 @@ export class Marquee {
   }
 
   setScrollSpeedScale() {
-    scrollTrigger.create({
+    this.scrollTrigger = scrollTrigger.create({
       trigger: this.container,
       scroller: '[data-scroll-container]',
       start: 'top bottom',
@@ -71,6 +84,13 @@ export class Marquee {
   }
 
   init() {
+    if (this.marqueeTimeline) {
+      this.marqueeTimeline.seek(0).kill();
+      this.marqueeTimeline = null;
+      this.scrollTrigger.kill();
+      this.removeCloneItems();
+    }
+
     this.renderCloneItems();
     this.setMarqueeTimeline();
     this.setScrollSpeedScale();

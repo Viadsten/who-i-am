@@ -3,11 +3,15 @@
 
   min-height: 200vh;
   height: 200vh;
+  min-height: calc(200 * var(--vh, 1vh));
+  height: calc(200 * var(--vh, 1vh));
+
 
   background-color: $color-default-black;
 
   & + section {
     margin-top: -98vh;
+    margin-top: calc(-98 * var(--vh, 1vh));
   }
 
   &__canvas {
@@ -46,6 +50,9 @@
     height: 100vh;
     max-height: 100vh;
     min-height: 100vh;
+    height: calc(100 * var(--vh, 1vh));
+    max-height: calc(100 * var(--vh, 1vh));
+    min-height: calc(100 * var(--vh, 1vh));
   }
 
   &__title {

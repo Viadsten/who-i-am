@@ -22,12 +22,12 @@ html(lang="ru")
     //- link(rel="preload", href="fonts/placeholder.woff2", as="font", crossorigin="anonymous")
     link(rel="stylesheet", href="css/style.min.css")
 
-  body
+  body.scroll-lock
     +sprite()
     .page-bg
+    if (hasHeader)
+      +header(headerMods, currentUrl)
     .wrapper(class=wrapperMods, data-scroll-container)
-      if (hasHeader)
-        +header(headerMods, currentUrl)
 
       block main
 
@@ -35,6 +35,22 @@ html(lang="ru")
         +footer(footerMods)
 
     .page-bg.page-bg--black(data-animate-bg)
+
+    .preloader
+      .preloader__item
+        .preloader__bg
+      .preloader__item
+        .preloader__bg
+      .preloader__item
+        .preloader__bg
+      .preloader__item
+        .preloader__bg
+      .preloader__item
+        .preloader__bg
+      .preloader__item
+        .preloader__bg
+      .preloader__item
+        .preloader__bg
 
     block modals
 

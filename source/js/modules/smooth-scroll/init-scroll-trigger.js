@@ -3,11 +3,26 @@ import {locomotive} from './init-locomotive';
 let scrollTrigger;
 let pageScroller;
 
+const setScrollTrigger = () => {
+  scrollTrigger = ScrollTrigger;
+  pageScroller = scrollTrigger.create({
+    trigger: '[data-scroll-container]',
+    scroller: '[data-scroll-container]',
+    start: 'top top',
+    end: 'bottom bottom',
+    onUpdate: (self) => {
+      // console.log(self.progress)
+    }
+  });
+  window.ps = pageScroller;
+}
+
 const initScrollTrigger = () => {
   gsap.registerPlugin(ScrollTrigger);
 
   if (!locomotive) {
-    console.warn('LocomotiveScroll not initialized');
+    // console.warn('LocomotiveScroll not initialized');
+    setScrollTrigger();
     return;
   }
   // при каждом обновлении локомотив будет дергать ScrollTrigger (синхронизируем их)
@@ -33,14 +48,7 @@ const initScrollTrigger = () => {
     ScrollTrigger.refresh();
   });
 
-  scrollTrigger = ScrollTrigger;
-  pageScroller = scrollTrigger.create({
-    trigger: '[data-scroll-container]',
-    scroller: '[data-scroll-container]',
-    start: 'top top',
-    end: 'bottom bottom',
-  });
-  window.ps = pageScroller;
+  setScrollTrigger();
 };
 
 export {initScrollTrigger, scrollTrigger, pageScroller};

@@ -28,6 +28,15 @@
   &__title-container {
     position: relative;
     top: 25vh;
+
+    @include vp-767 {
+      top: 10vh;
+      left: calc(-1 * size($pd-sm));
+      width: 100vw;
+      height: size(100px);
+
+      background-color: $color-default-black;
+    }
   }
 
   &__title-quote {

@@ -60,6 +60,9 @@ export class IntroAnimation {
       invalidateOnRefresh: true,
       start: 'top top',
       end: 'bottom bottom',
+      onUpdate: (self) => {
+        console.log(self.progress)
+      }
     });
   }
 }
