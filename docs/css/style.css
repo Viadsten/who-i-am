@@ -2020,6 +2020,7 @@ html.has-scroll-smooth .sticky-block {
 }
 
 .contact {
+  margin-top: -50vh;
   position: relative;
   min-height: 100vh;
   max-height: 100vh;
@@ -2046,6 +2047,7 @@ html.has-scroll-smooth .sticky-block {
 
 .contact__list {
   margin: 0 auto;
+  padding: 0;
   max-width: 62.5rem;
   width: 100%;
   display: -webkit-box;
@@ -2272,12 +2274,13 @@ html.has-scroll-smooth .sticky-block {
   }
 
   .horizontal-section--technology-title {
-    margin-top: 0;
+    margin-top: -200vh;
   }
 
   .technology-list__title-col {
     z-index: 2;
     overflow: visible;
+    width: 6.25rem;
   }
 
   .technology-list__sticky {
@@ -2285,17 +2288,41 @@ html.has-scroll-smooth .sticky-block {
   }
 
   .technology-list__title-container {
-    top: 10vh;
+    top: 20vh;
     left: -1.875rem;
     width: 100vw;
     height: 6.25rem;
     background-color: #000000;
   }
 
+  .technology-list__title-quote {
+    display: none;
+  }
+
+  .technology-list__title {
+    top: 0rem;
+    color: #ffffff;
+  }
+
+  .technology-list__title br {
+    display: none;
+  }
+
   .technology-list__title[data-animate-technology-list=title] {
     font-size: 3.75rem;
     white-space: nowrap;
-    mix-blend-mode: difference;
+  }
+
+  .technology-list__title[data-animate-technology-list=title] .word {
+    line-height: 6.25rem;
+  }
+
+  .technology-list__description::after {
+    display: none;
+  }
+
+  .contact__inner {
+    padding: 12.5rem 0 6.25rem;
   }
 
   .about .container {
