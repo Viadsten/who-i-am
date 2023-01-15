@@ -40,6 +40,8 @@ export class IntroTitle {
     this.mousePos = {x: 0, y: 0};
     this.pointerX = 0;
 
+    this.eventFontLoaded = new Event('fontLoaded');
+
     this.handleMouseMove = this.handleMouseMove.bind(this);
     this.fontPromise = this.fontPromise.bind(this);
     this.animate = this.animate.bind(this);
@@ -126,7 +128,6 @@ export class IntroTitle {
     this.renderer = new THREE.WebGLRenderer({antialias: true});
     this.renderer.setPixelRatio(window.devicePixelRatio);
     this.renderer.setSize(window.innerWidth, window.innerHeight);
-    window.rer = this.renderer;
     this.canvas.appendChild(this.renderer.domElement);
   }
 
@@ -138,6 +139,7 @@ export class IntroTitle {
   }
 
   fontPromise(response) {
+    window.dispatchEvent(this.eventFontLoaded);
     this.font = response;
     this.refreshText();
   }

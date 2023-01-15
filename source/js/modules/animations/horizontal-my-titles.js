@@ -83,17 +83,17 @@ export class HorizontalMyTitles {
       paused: true,
     });
 
-    if (!this.mediaOrientationPortret()) {
-      scrollTrigger.create({
-        trigger: this.container,
-        scroller: '[data-scroll-container]',
-        start: () => `top top-=${this.height / 2}`,
-        end: () => `+=${this.height / 4}`,
-        animation: this.hideTimeline,
-        scrub: this.touchVp ? 1 : true,
-        invalidateOnRefresh: true,
-      });
-    }
+    // if (!this.mediaOrientationPortret()) {
+    scrollTrigger.create({
+      trigger: this.container,
+      scroller: '[data-scroll-container]',
+      start: () => `top top-=${this.height / 2}`,
+      end: () => `+=${this.height / 4}`,
+      animation: this.hideTimeline,
+      scrub: this.touchVp ? 1 : true,
+      invalidateOnRefresh: true,
+    });
+    // }
 
     this.initHorizontalAnimations();
   }

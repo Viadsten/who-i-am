@@ -3,7 +3,7 @@ import {ScrollLock} from "../utils/scroll-lock.js";
 export class Loader {
   constructor() {
     this.сontainer = document.querySelector('.preloader');
-    console.log(this.container)
+
     if (!this.сontainer) {
       return;
     }
@@ -15,12 +15,7 @@ export class Loader {
     this.off = this.off.bind(this);
     this.hide = this.hide.bind(this);
 
-    console.log('init')
     this.init();
-  }
-
-  setAnimation() {
-
   }
 
   hide() {
@@ -62,6 +57,6 @@ export class Loader {
   }
 
   init() {
-    this.hide();
+    window.addEventListener('fontLoaded', this.hide);
   }
 }

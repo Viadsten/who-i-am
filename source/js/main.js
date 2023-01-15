@@ -25,8 +25,8 @@ window.addEventListener('DOMContentLoaded', () => {
       initLocomotiveScroll();
       initScrollTrigger();
       initScrollObserver();
-      initAnimationModule();
       new Loader();
+      initAnimationModule();
     }, 5);
 
     setTimeout(() => {
