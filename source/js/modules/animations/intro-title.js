@@ -66,8 +66,8 @@ export class IntroTitle {
 
   setScroll() {
     this.timeline = gsap.timeline({paused: true});
-    this.timeline.to(this.meshVar.position, {z: this.vp767 ? '-=300' : '-=200'});
-    this.timeline.to(this.meshVar.position, {y: this.vp767 ? '+=200' : '+=75'}, 0);
+    this.timeline.to(this.meshVar.position, {z: this.vp767.matches ? '-=300' : '-=200'});
+    this.timeline.to(this.meshVar.position, {y: this.vp767.matches ? '+=200' : '+=75'}, 0);
     this.timeline.to('[data-animate-intro="content"]', {
       scale: 0.7,
       y: '-40%',
