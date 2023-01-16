@@ -41,6 +41,7 @@ export class IntroTitle {
     this.pointerX = 0;
 
     this.eventFontLoaded = new Event('fontLoaded');
+    this.vp767 = window.matchMedia('(max-width: 767px)');
 
     this.handleMouseMove = this.handleMouseMove.bind(this);
     this.fontPromise = this.fontPromise.bind(this);
@@ -65,8 +66,8 @@ export class IntroTitle {
 
   setScroll() {
     this.timeline = gsap.timeline({paused: true});
-    this.timeline.to(this.meshVar.position, {z: '-=200'});
-    this.timeline.to(this.meshVar.position, {y: '+=75'}, 0);
+    this.timeline.to(this.meshVar.position, {z: this.vp767 ? '-=300' : '-=200'});
+    this.timeline.to(this.meshVar.position, {y: this.vp767 ? '+=200' : '+=75'}, 0);
     this.timeline.to('[data-animate-intro="content"]', {
       scale: 0.7,
       y: '-40%',
