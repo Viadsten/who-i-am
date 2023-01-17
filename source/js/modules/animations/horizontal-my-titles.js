@@ -66,7 +66,6 @@ export class HorizontalMyTitles {
       ease: 'none',
     });
 
-    console.log(this.mediaOrientationPortret());
     scrollTrigger.create({
       trigger: this.container,
       scroller: '[data-scroll-container]',
@@ -83,7 +82,6 @@ export class HorizontalMyTitles {
       paused: true,
     });
 
-    // if (!this.mediaOrientationPortret()) {
     scrollTrigger.create({
       trigger: this.container,
       scroller: '[data-scroll-container]',
@@ -93,7 +91,6 @@ export class HorizontalMyTitles {
       scrub: this.touchVp ? 1 : true,
       invalidateOnRefresh: true,
     });
-    // }
 
     this.initHorizontalAnimations();
   }
