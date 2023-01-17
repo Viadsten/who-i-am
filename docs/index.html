@@ -5,13 +5,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="viadsten">
+    <meta name="description" content="viadsten - frontend developer">
+    <meta property="og:image" content="./img/content/og-image.jpg">
     <link rel="apple-touch-icon" sizes="180x180" href="./img/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
     <link rel="manifest" crossorigin="use-credentials" href="./img/favicon/site.webmanifest">
     <link rel="mask-icon" href="./img/favicon/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-TileColor" content="#000000">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="css/style.min.css">
   </head>
@@ -27,20 +28,7 @@
     </div>
     <div class="page-bg"></div>
     <header class="header">
-      <div class="container"><a class="header__logo" href="https://t.me/viadsten" aria-label="contact me" target="_blank">viadsten</a>
-        <!--button.header__toggle.btn-reset(type="button", aria-label="toggle menu", aria-pressed="false")-->
-        <!--  +icon("icon-burger", 20, 20)-->
-        <!--nav.main-nav-->
-        <!--  .main-nav__wrapper-->
-        <!--    ul.main-nav__list-->
-        <!--      each link in headerLinks-->
-        <!--        - const activeState = currentUrl === link.href-->
-        <!--        li.main-nav__item-->
-        <!--          if(activeState)-->
-        <!--            span.main-nav__link.is-active=link.text-->
-        <!--          else-->
-        <!--            a.main-nav__link(href=link.href)=link.text-->
-      </div>
+      <div class="container"><a class="header__logo" href="https://t.me/viadsten" aria-label="contact me" target="_blank">viadsten</a></div>
     </header>
     <div class="wrapper" data-scroll-container>
       <main>
@@ -55,9 +43,10 @@
           </div>
         </section>
         <section class="about">
+          <h2 class="visually-hidden">About me</h2>
           <div class="container container--slim">
             <div class="about__img">
-              <video src="./video/memoji.mp4" autoplay="true" muted playsinline loop></video>
+              <video src="./video/memoji.mp4" autoplay muted playsinline loop></video>
             </div>
             <div class="about__description">
               <p class="about__text">Hello, my&nbsp;name is&nbsp;Vlad and I&nbsp;am a&nbsp;front-end developer and team lead with 3&nbsp;years of&nbsp;experience.</p>
@@ -96,6 +85,7 @@
           </div>
         </div>
         <section class="technology-list" data-animate-technology-list>
+          <h2 class="visually-hidden">My technology stack</h2>
           <div class="container container--slim">
             <div class="technology-list__title-col">
               <div class="locomotive-sticky" id="technology-list-sticky"></div>
@@ -134,7 +124,7 @@
           </div>
         </section>
         <section class="contact">
-          <h2 class="visually-hidden">contact</h2>
+          <h2 class="visually-hidden">Contact</h2>
           <div class="contact__inner">
             <div class="contact__marquee">
               <div class="marquee" data-marquee>
