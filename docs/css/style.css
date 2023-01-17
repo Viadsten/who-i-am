@@ -1831,6 +1831,7 @@ html.has-scroll-smooth .sticky-block {
   height: 100%;
   border-radius: 50%;
   background-color: #fff;
+  opacity: 0;
 }
 
 .marquee {
