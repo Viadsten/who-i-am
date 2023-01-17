@@ -25,6 +25,7 @@ export class Cursor {
 
     this.clickIsPlaying = false;
     this.circleBtnInView = false;
+    this.hidden = true;
 
     this.breakpointChecker = this.breakpointChecker.bind(this);
     this.setListeners = this.setListeners.bind(this);
@@ -99,6 +100,14 @@ export class Cursor {
   handlerMouseMove(evt) {
     if (evt && evt.type === 'mousemove') {
       this.evt = evt;
+      if (this.hidden) {
+        this.hidden = false;
+        gsap.to(this.cursorContent, {
+          opacity: 1,
+          duration: 0.3,
+          delay: 0.3,
+        });
+      }
     } else if (!this.evt && !evt) {
       return;
     }
