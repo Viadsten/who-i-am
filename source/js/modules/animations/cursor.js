@@ -69,15 +69,15 @@ export class Cursor {
     }
 
     const skew = {
-      x: gsap.utils.clamp(0, 30, this.movementPos.x * 0.25),
-      y: gsap.utils.clamp(0, 30, this.movementPos.y * 0.25),
+      x: gsap.utils.clamp(0, 30, this.movementPos.x * 0.5),
+      y: gsap.utils.clamp(0, 30, this.movementPos.y * 0.5),
     };
 
     const skewRotate = (this.direction.x === 1 && this.direction.y === 1) || (this.direction.x === -1 && this.direction.y === -1) ? 1 : -1;
-    const height = 100 + gsap.utils.clamp(0, 40, this.movementPos.y - this.movementPos.x) - gsap.utils.clamp(0, 20, this.movementPos.x - this.movementPos.y);
-    const width = 100 + gsap.utils.clamp(0, 40, this.movementPos.x - this.movementPos.y) - gsap.utils.clamp(0, 20, this.movementPos.y - this.movementPos.x);
+    const height = 100 + gsap.utils.clamp(0, 70, this.movementPos.y - this.movementPos.x) - gsap.utils.clamp(0, 20, this.movementPos.x - this.movementPos.y) * 1.2;
+    const width = 100 + gsap.utils.clamp(0, 70, this.movementPos.x - this.movementPos.y) - gsap.utils.clamp(0, 20, this.movementPos.y - this.movementPos.x) * 1.2;
 
-    const skewValue = gsap.utils.clamp(-20, 20, skew.x * skew.y * skewRotate);
+    const skewValue = gsap.utils.clamp(-30, 30, skew.x * skew.y * skewRotate);
 
     gsap.to(this.cursorContent, {
       duration: 0.005,
