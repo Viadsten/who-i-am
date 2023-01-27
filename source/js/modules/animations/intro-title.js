@@ -11,6 +11,7 @@ export class IntroTitle {
       return;
     }
     this.canvas = this.container.querySelector('[data-animate-intro="canvas"]');
+    this.fontSrc = this.container.dataset.font;
 
     this.text = 'viadsten';
     this.fontName = 'Mulish Medium';
@@ -147,7 +148,7 @@ export class IntroTitle {
 
   loadFont() {
     const loader = new FontLoader();
-    loader.load('./fonts/Mulish-Regular.json', this.fontPromise);
+    loader.load(this.fontSrc, this.fontPromise);
   }
 
   createText() {
